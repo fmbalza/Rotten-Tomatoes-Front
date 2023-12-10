@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ movieDetail.original_title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="movie-details">
+    <div class="poster-container">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movieDetail.poster_path" alt="Movie Poster" class="poster-image">
+    </div>
+    <div class="details-container">
+      <div class="rating-container">
+        <div class="rating-circle">
+          <span class="rating">{{ movieDetail.vote_average }}</span>
+        </div>
+      </div>
+      <div class="overview">
+        <h3>Overview</h3>
+        <p>{{ movieDetail.overview }}</p>
+      </div>
+      <div class="additional-details">
+        <h3>Additional Details</h3>
+        <ul>
+
+          <li><strong>Genre IDs:</strong>{{ this.genres }} </li>
+          <li><strong>Popularity:</strong> {{ movieDetail.popularity }}</li>
+          <li><strong>Release Date:</strong> {{ movieDetail.release_date }}</li>
+          <li><strong>Original Language:</strong> {{ movieDetail.original_language }}</li>
+ 
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="comments-section">
+    <h3 class="comments">Comments</h3>
+    
+      <ion-textarea class="boxes" label-placement="floating" fill="outline"  type="text" placeholder="Write a comment..."></ion-textarea>
+      <ion-button class="boton" slot="end" >
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    
+  
+
+  </div>
+</ion-content>

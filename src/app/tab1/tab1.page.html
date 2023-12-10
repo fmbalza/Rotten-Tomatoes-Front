@@ -1,17 +1,107 @@
-<ion-header [translucent]="true">
+<ion-header #header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-h6>
+      <ion-icon name="film" color="primary" size="large"></ion-icon>
+    </ion-h6>
+    <ion-buttons slot="end">
+  
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-segment  mode="md" #segmentcontrol>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+</ion-segment>
+
+<ion-content>
+
+  <div class="noticias">
+    <h3>   Mas Recientes </h3>
+    <swiper-container  :modules="modules" :autoplay="true" :keyboard="true" :pagination="true" :scrollbar="true" :zoom="true">
+      <swiper-slide class="card">
+          <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
+      </swiper-slide>
+          <swiper-slide class="card" >
+            <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
+        </swiper-slide>
+        <swiper-slide class="card" >
+          <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
+      </swiper-slide>
+          <swiper-slide class="card" >
+            <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
+        </swiper-slide>
+        <swiper-slide class="card" >
+          <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
+        </swiper-slide>
+    </swiper-container>
+  </div>
+  
+
+  
+
+  <div class="box">
+    <h6>   Movies</h6>
+    <swiper-container   slides-per-view="3" spaceBetween="5" loop="true">
+      <swiper-slide *ngFor="let movie of movies">
+          <app-movie [movie]="movie"></app-movie>
+      </swiper-slide>
+    </swiper-container>
+
+  </div>
+  <div class="box">
+  <h6>   Top RatedMovies</h6>
+  <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
+    <swiper-slide *ngFor="let movie of moviesTopRated">
+        <app-movie [movie]="movie"></app-movie>
+    </swiper-slide>
+  </swiper-container>
+</div>
+<div class="box">
+  <h6>   Action</h6>
+  <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
+    <swiper-slide *ngFor="let movie of movieAction">
+        <app-movie [movie]="movie"></app-movie>
+    </swiper-slide>
+  </swiper-container>
+</div>
+
+<div class="box">
+  <h6>   Comedy</h6>
+  <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
+    <swiper-slide *ngFor="let movie of movieCommedy">
+        <app-movie [movie]="movie"></app-movie>
+    </swiper-slide>
+  </swiper-container>
+</div>
+
+<script>
+  import { defineComponent } from 'vue';
+  import { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import { IonContent, IonPage } from '@ionic/vue';
+
+  import 'swiper/css';
+  import 'swiper/css/autoplay';
+  import 'swiper/css/keyboard';
+  import 'swiper/css/pagination';
+  import 'swiper/css/scrollbar';
+  import 'swiper/css/zoom';
+  import '@ionic/vue/css/ionic-swiper.css';
+
+  export default defineComponent({
+    components: { Swiper, SwiperSlide, IonContent, IonPage },
+    setup() {
+      return {
+        modules: [Autoplay, Keyboard, Pagination, Scrollbar, Zoom],
+      };
+    },
+  });
+</script>
+
 </ion-content>

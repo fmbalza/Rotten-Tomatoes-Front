@@ -1,0 +1,16 @@
+.comment {
+    margin-bottom: 10px;
+  }
+  
+  .user {
+    font-weight: bold;
+  }
+  
+  .content {
+    margin-top: 5px;
+  }
+  
+  .date {
+    color: gray;
+    font-size: 12px;
+  }

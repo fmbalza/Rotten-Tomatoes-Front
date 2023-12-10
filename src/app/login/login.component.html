@@ -1,0 +1,37 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content >
+  <div class="logo-container">
+    <ion-icon class="icono" name="film" color="primary" size="large"></ion-icon>
+    <h1>MovieHub</h1>
+   
+  </div>
+  
+  <h5>Sign in to continue!</h5>
+
+
+
+  
+  <ion-item class="boxes">
+    <ion-label position="floating">Username</ion-label>
+    <ion-input type="text"  fill="outline" placeholder="Enter text" [(ngModel)]="existinguser.username"></ion-input>
+  </ion-item>
+  
+  <ion-item class="boxes">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="{{ showPassword ? 'text' : 'password' }}" [(ngModel)]="existinguser.password"></ion-input>
+    <ion-icon name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" (click)="togglePasswordVisibility()"></ion-icon>
+  </ion-item>
+  
+  <ion-button class="boton" expand="block" color="primary" (click)="signIn()" >Sign In</ion-button>
+  
+  <div class="signup-container">
+    <p>You do not have an account? <a href="#" routerLink="/register">Sign Up</a></p>
+  </div>
+
+</ion-content>
+
+
+
