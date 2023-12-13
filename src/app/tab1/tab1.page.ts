@@ -34,26 +34,28 @@ export class Tab1Page implements OnInit {
     
     });
 
-    this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies/search/latest').subscribe((data: any) => {
-      console.log('movies: ', data.results);
+    this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies').subscribe((data: any) => {
+      console.log('movies lastest: ', data.results);
       this.movieLastest = data.results;
     
     });  
 
+
+
     this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies/rating/toprated').subscribe((data: any) => {
-      console.log('movies: ', data.results);
+      console.log('movies Toprated: ', data.results);
       this.moviesTopRated = data.results;
     
     });   
 
-    this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies/genre/28').subscribe((data: any) => {
-      console.log('movies: ', data.results);
+    this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies/discover/28').subscribe((data: any) => {
+      console.log('movies Action: ', data.results);
       this.movieAction = data.results;
     
     }); 
 
-    this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies/genre/35').subscribe((data: any) => {
-      console.log('movies: ', data.results);
+    this.http.get('https://rotten-tomatoes-backend.up.railway.app/movies/discover/35').subscribe((data: any) => {
+      console.log('movies Commedy: ', data.results);
       this.movieCommedy = data.results;
     
     }); 

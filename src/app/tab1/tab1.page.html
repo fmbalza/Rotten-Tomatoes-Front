@@ -20,64 +20,62 @@
 </ion-segment>
 
 <ion-content>
-
   <div class="noticias">
-    <h3>   Mas Recientes </h3>
-    <swiper-container  :modules="modules" :autoplay="true" :keyboard="true" :pagination="true" :scrollbar="true" :zoom="true">
-      <swiper-slide class="card">
-          <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
-      </swiper-slide>
-          <swiper-slide class="card" >
-            <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
-        </swiper-slide>
-        <swiper-slide class="card" >
-          <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
-      </swiper-slide>
-          <swiper-slide class="card" >
-            <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
-        </swiper-slide>
-        <swiper-slide class="card" >
-          <img class="imagen" src="../../assets/fotos de prueba/34e71699f42fe511f316632830a12331.jpg" alt="">
-        </swiper-slide>
-    </swiper-container>
-  </div>
+    <h1>   Noticias</h1>
   
-
-  
-
-  <div class="box">
-    <h6>   Movies</h6>
-    <swiper-container   slides-per-view="3" spaceBetween="5" loop="true">
-      <swiper-slide *ngFor="let movie of movies">
-          <app-movie [movie]="movie"></app-movie>
+    <swiper-container  :modules="modules" :autoplay="true" :keyboard="true" :pagination="true" :scrollbar="true" :zoom="true" >
+      <swiper-slide class="card"  *ngFor="let poster of movieLastest">
+          <app-poster  [poster]="poster"></app-poster>
       </swiper-slide>
     </swiper-container>
 
   </div>
+
   <div class="box">
-  <h6>   Top RatedMovies</h6>
-  <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
-    <swiper-slide *ngFor="let movie of moviesTopRated">
+    <div class="header">
+      <h6>   Top RatedMovies</h6>
+      <h6  routerLink="/register"> Ver mas</h6>
+    </div>
+    <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
+      <swiper-slide *ngFor="let movie of moviesTopRated">
         <app-movie [movie]="movie"></app-movie>
-    </swiper-slide>
-  </swiper-container>
-</div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
 <div class="box">
-  <h6>   Action</h6>
+  <div class="header">
+    <h6>  Action</h6>
+    <h6  routerLink="/register"> Ver mas</h6>
+  </div>
   <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
     <swiper-slide *ngFor="let movie of movieAction">
-        <app-movie [movie]="movie"></app-movie>
+      <app-movie [movie]="movie"></app-movie>
     </swiper-slide>
   </swiper-container>
 </div>
 
 <div class="box">
-  <h6>   Comedy</h6>
+  <div class="header">
+    <h6>   Comedy</h6>
+    <h6  routerLink="/register"> Ver mas</h6>
+  </div>
   <swiper-container   slides-per-view="3" spaceBetween="5" loop="true" >
     <swiper-slide *ngFor="let movie of movieCommedy">
         <app-movie [movie]="movie"></app-movie>
     </swiper-slide>
   </swiper-container>
+</div>
+<div class="box">
+  <div class="header">
+    <h6>   Movies</h6>
+    <h6  routerLink="/register"> Ver mas</h6>
+  </div>
+  <swiper-container   slides-per-view="3" spaceBetween="5" loop="true">
+    <swiper-slide *ngFor="let movie of movies">
+        <app-movie [movie]="movie"></app-movie>
+    </swiper-slide>
+  </swiper-container>
+
 </div>
 
 <script>
@@ -85,7 +83,7 @@
   import { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper';
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import { IonContent, IonPage } from '@ionic/vue';
-
+  
   import 'swiper/css';
   import 'swiper/css/autoplay';
   import 'swiper/css/keyboard';
@@ -93,7 +91,7 @@
   import 'swiper/css/scrollbar';
   import 'swiper/css/zoom';
   import '@ionic/vue/css/ionic-swiper.css';
-
+  
   export default defineComponent({
     components: { Swiper, SwiperSlide, IonContent, IonPage },
     setup() {

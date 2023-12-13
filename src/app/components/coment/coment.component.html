@@ -1,5 +1,9 @@
 <div class="comment">
-  <div class="user">{{ comment.username }}</div>
+  <h3>{{ comment.user.username }}</h3>
   <div class="content">{{ comment.text }}</div>
-  <div class="date">{{ comment.creationDate | date }}</div>
+  <ion-icon name="arrow-redo-outline" (click)="toggleReplyInput(comment)"></ion-icon>
+  <div class="reply-input" *ngIf="comment.showReplyInput">
+    <ion-textarea [(ngModel)]="comment.reply" class="reply-box" label-placement="floating" fill="outline" type="text" placeholder="Write a reply..."></ion-textarea>
+    <ion-button (click)="submitReply(comment)" class="reply-button">Reply</ion-button>
+  </div>
 </div>

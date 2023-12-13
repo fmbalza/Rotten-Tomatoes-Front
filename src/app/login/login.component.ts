@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit  {
       username:'',
       password:''
     }
-    constructor( private http: HttpClient, private nav: NavController, private authService: AuthService) {}
+    constructor( private alertCtrl: AlertController, private http: HttpClient, private nav: NavController, private authService: AuthService) {}
 
     ngOnInit(): void {
       this.existinguser={
@@ -37,7 +37,18 @@ export class LoginComponent implements OnInit  {
   }
   
   async signIn() {
-    
+    if (!this.existinguser.username || !this.existinguser.password) {
+      console.log('Uno o más campos están vacíos');
+      const alert = await this.alertCtrl.create({
+        cssClass: 'alert',
+        header: 'Alert',
+ 
+        message: 'Please fill in all fields',
+        buttons: ['OK']
+      });
+      await alert.present();
+      return;
+    }
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

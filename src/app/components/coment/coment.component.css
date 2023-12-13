@@ -1,16 +1,33 @@
 .comment {
-    margin-bottom: 10px;
-  }
-  
-  .user {
-    font-weight: bold;
-  }
-  
-  .content {
-    margin-top: 5px;
-  }
-  
-  .date {
-    color: gray;
-    font-size: 12px;
-  }
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 20px;
+}
+
+.comment .content {
+  font-size: 16px;
+  color: #333;
+}
+
+h3 {
+  color: #333;
+}
+
+ion-icon {
+  color: #333;
+}
+
+.reply-input {
+  margin-top: 10px;
+}
+
+.reply-box {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.reply-button {
+ 
+  margin-bottom: 20px;
+}

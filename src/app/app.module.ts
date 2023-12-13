@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedComponentsModule } from './components/shared-components.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { MovieDetailedComponent } from './movieDetailed/movieDetailed.component';
+
 @NgModule({
   declarations: [				AppComponent,
       LoginComponent,

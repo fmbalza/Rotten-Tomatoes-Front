@@ -5,8 +5,7 @@ import { Storage } from '@ionic/storage-angular';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { TweetService } from 'src/app/services/tweetService.service';
-import { perfil } from 'src/app/interfaces/user';
-import { deleteComment } from 'src/app/interfaces/comment';
+
 
 @Component({
   selector: 'app-coment',
@@ -16,21 +15,30 @@ import { deleteComment } from 'src/app/interfaces/comment';
 export class ComentComponent implements OnInit {
 
   @Input() comment: any;
-  @Input() showDeleteButton: boolean = false;
 
-  perfil: perfil = {  
-    username: '',
-    userId: '', 
-  };
+
+ 
 
 
   constructor(private nav: NavController, private tweetService: TweetService, private http: HttpClient, private storage: Storage) { }
 
   ngOnInit() {
-    this.perfil = {  
-      username: '',
-      userId: '', 
-    };
+
   }
+
+  toggleReplyInput(comment: any) {
+    comment.showReplyInput = !comment.showReplyInput;
+  }
+  
+  submitReply(comment: any) {
+    // Aquí puedes realizar acciones adicionales, como enviar la respuesta al servidor, etc.
+    console.log("Reply submitted:", comment.reply);
+  
+    // Restablece el estado
+    comment.reply = '';
+    comment.showReplyInput = false;
+}
+
+
 
 }

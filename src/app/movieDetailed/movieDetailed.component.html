@@ -1,49 +1,97 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
+      <ion-back-button (click)="back()"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ movieDetail.original_title }}</ion-title>
+    <ion-title>{{ movieDetail.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="movie-details">
     <div class="poster-container">
-      <img [src]="'https://image.tmdb.org/t/p/w500' + movieDetail.poster_path" alt="Movie Poster" class="poster-image">
+      <img [src]="movieDetail.img" alt="Movie Poster" class="poster-image">
     </div>
     <div class="details-container">
       <div class="rating-container">
         <div class="rating-circle">
-          <span class="rating">{{ movieDetail.vote_average }}</span>
+          <span class="rating">{{ this.movieDetail.publicRating }}</span>
         </div>
+      
+      </div>
+      <div class="rating-container">
+
+        <div class="rating-circle">
+          <span class="rating">{{ this.movieDetail.criticRating }}</span>
+        </div>
+      
       </div>
       <div class="overview">
         <h3>Overview</h3>
-        <p>{{ movieDetail.overview }}</p>
+        <p>{{ movieDetail.description }}</p>
       </div>
       <div class="additional-details">
         <h3>Additional Details</h3>
         <ul>
 
           <li><strong>Genre IDs:</strong>{{ this.genres }} </li>
-          <li><strong>Popularity:</strong> {{ movieDetail.popularity }}</li>
+          <!-- <li><strong>Popularity:</strong> {{ movieDetail.popularity }}</li>
           <li><strong>Release Date:</strong> {{ movieDetail.release_date }}</li>
-          <li><strong>Original Language:</strong> {{ movieDetail.original_language }}</li>
+          <li><strong>Original Language:</strong> {{ movieDetail.original_language }}</li> -->
  
         </ul>
       </div>
     </div>
   </div>
-  <div class="comments-section">
-    <h3 class="comments">Comments</h3>
-    
-      <ion-textarea class="boxes" label-placement="floating" fill="outline"  type="text" placeholder="Write a comment..."></ion-textarea>
-      <ion-button class="boton" slot="end" >
-        <ion-icon name="send"></ion-icon>
-      </ion-button>
-    
   
+<div class="comments-section">
+  <h2 class="comments"> Califica</h2>
+  <div class="rating">
+    <input type="radio" name="califica" value="10">
+    <input type="radio" name="califica" value="9">
+    <input type="radio" name="califica" value="8">
+    <input type="radio" name="califica" value="7">
+    <input type="radio" name="califica" value="6">
+    <input type="radio" name="califica" value="5">
+    <input type="radio" name="califica" value="4">
+    <input type="radio" name="califica" value="3">
+    <input type="radio" name="califica" value="2">
+    <input type="radio" name="califica" value="1">
 
   </div>
+  <ion-button (click)="createRatingg()" class="calificar-button">Rate</ion-button>
+</div>
+
+
+
+
+
+
+
+
+
+
+    <h3 class="comments">Comments</h3>
+
+    <div class="comments-section">  
+      <div class="textarea-container">
+        <ion-textarea [(ngModel)]="createComment.text" class="boxes" label-placement="floating" fill="outline" type="text" placeholder="Write a comment..."></ion-textarea>
+      </div>
+      <div class="button-container">
+        <ion-button (click)="createCommentt()" class="boton" slot="end">
+          <ion-icon name="send"></ion-icon>
+        </ion-button>
+      </div>
+    
+
+    </div>
+  
+  
+
+
+  <div >
+    <app-coment *ngFor="let comment of comments" [comment]="comment" ></app-coment>
+  </div >
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </ion-content>

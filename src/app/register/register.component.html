@@ -11,31 +11,33 @@
   <h5> Sign up to get started!</h5>
 
 
+    <div class="BigBox">
+      <ion-item class="boxes">
+        <ion-label position="floating">Name</ion-label>
+        <ion-input label-placement="floating" fill="outline" placeholder="Enter Name" type="text" [(ngModel)]="newuser.name"></ion-input>
+      </ion-item>
+      <ion-item class="boxes">
+        <ion-label position="floating">Lastname</ion-label>
+        <ion-input label-placement="floating" fill="outline" placeholder="Enter Lastname" type="text" [(ngModel)]="newuser.lastname"></ion-input>
+      </ion-item>
     <ion-item class="boxes">
-      <ion-label position="floating">Name</ion-label>
-      <ion-input label-placement="floating" fill="outline" placeholder="Enter Name" type="text" [(ngModel)]="newuser.name"></ion-input>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input label-placement="floating" fill="outline" placeholder="Enter Username" type="text" [(ngModel)]="newuser.username"></ion-input>
     </ion-item>
+  
     <ion-item class="boxes">
-      <ion-label position="floating">Lastname</ion-label>
-      <ion-input label-placement="floating" fill="outline" placeholder="Enter Lastname" type="text" [(ngModel)]="newuser.lastname"></ion-input>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input  label-placement="floating" fill="outline" placeholder="Enter Email valid" type="text" [(ngModel)]="newuser.email"></ion-input>
     </ion-item>
-  <ion-item class="boxes">
-    <ion-label position="floating">Username</ion-label>
-    <ion-input label-placement="floating" fill="outline" placeholder="Enter Username" type="text" [(ngModel)]="newuser.username"></ion-input>
-  </ion-item>
-
-  <ion-item class="boxes">
-    <ion-label position="floating">Email</ion-label>
-    <ion-input  label-placement="floating" fill="outline" placeholder="Enter Email valid" type="text" [(ngModel)]="newuser.email"></ion-input>
-  </ion-item>
-
-  <ion-item class="boxes">
-    <ion-label position="floating">Password</ion-label>
-    <ion-input label-placement="floating" fill="outline" placeholder="Enter a Password" type="text" [(ngModel)]="newuser.password"></ion-input>
-  </ion-item>
+  
+    <ion-item class="boxes">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input label-placement="floating" fill="outline" placeholder="Enter a Password" type="text" [(ngModel)]="newuser.password"></ion-input>
+    </ion-item>
+    <ion-button class="boton" (click)="signUp()">Sign Up</ion-button>
+    </div>
 
 
-  <ion-button class="boton" (click)="signUp()">Sign Up</ion-button>
 
 
 </ion-content>

@@ -53,7 +53,7 @@
     border: 2px solid #00000025;
     border-radius: 10px;
     margin: 10px;
-    margin-top: 20px;
+    margin-top: 0px;
   }
 
   .boton{
@@ -67,3 +67,20 @@
   ion-toolbar{
     --background: url("../../assets/909ad238365dbdd7ee088110a24edb39.jpg") no-repeat center center / cover;
   }
+
+  
+.alert{
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+  color: #333;
+  font-size: 14px;
+}
+
+.BigBox{
+  height: 530px;
+  padding-top: 30px;
+  border-radius: 20px;
+}
+

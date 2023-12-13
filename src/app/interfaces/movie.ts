@@ -56,15 +56,12 @@ export interface movieLastest{
 
 export interface movieDetail{
     id: string;
-    original_title: string;
-    poster_path: string;
-    video: boolean;
-    vote_average: string;
-    backdrop_path:string;
-    overview:string;
-    popularity: string;
-    release_date: string;
-    original_language: string;
+    title: string;
+    img: string;
+    description:string;
+    publicRating: string;
+    criticRating: string;
+
 }
 
 

@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor( private http: HttpClient, private nav: NavController) {}
+  constructor(  private alertCtrl: AlertController ,private http: HttpClient, private nav: NavController) {}
 
   newuser: newUser = {       
     
@@ -43,12 +43,41 @@ export class RegisterComponent implements OnInit {
    async signUp() {
     
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
+    if (
+      !this.newuser.email ||
+      !this.newuser.username ||
+      !this.newuser.password ||
+      !this.newuser.name ||
+      !this.newuser.lastname
+    ) {
+      console.log('Uno o más campos están vacíos');
+      const alert = await this.alertCtrl.create({
+        cssClass: 'alert',
+        header: 'Alert',
+    
+        message: 'Please fill in all fields',
+        buttons: ['OK']
+      });
+      await alert.present();
+      return;
+    }
     if (!emailPattern.test(this.newuser.email)) {
       // El correo electrónico no tiene una estructura válida
       console.log('El correo electrónico no es válido');
+      const alert = await this.alertCtrl.create({
+        cssClass: 'alert',
+        header: 'Alert',
+        subHeader: 'Subtitle',
+        message: 'You have entered an invalid email address',
+        buttons: ['OK']
+      }) 
+      await alert.present();
+
+
       return;
     }
+
+
 
     const httpOptions = {
       headers: new HttpHeaders({

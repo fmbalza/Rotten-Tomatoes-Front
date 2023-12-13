@@ -1,0 +1,24 @@
+
+.card{
+
+    width: 555px;
+    background: none;
+
+}
+
+.card:hover{
+
+    width: 500px;
+    background: none;
+    color: #e78b00;
+}
+h2{
+    color: white;
+    font-size: 12px;
+}
+.poster{
+    border-radius: 10px;
+     background: none;
+    width: 360px;
+
+}
