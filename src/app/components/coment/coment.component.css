@@ -1,33 +1,73 @@
 .comment {
-  background-color: #f2f2f2;
-  border-radius: 4px;
+  border: 2px solid rgb(178, 139, 71);
+  background-color: #5353534b;
+  border-radius: 10px;
   padding: 10px;
   margin: 20px;
 }
 
 .comment .content {
   font-size: 16px;
-  color: #333;
+  color: #d1d1d1;
 }
 
 h3 {
-  color: #333;
+  color: #dddddd;
 }
 
 ion-icon {
-  color: #333;
+  color: #cc7700;
 }
 
 .reply-input {
   margin-top: 10px;
 }
 
+.reply-input .input-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
 .reply-box {
   margin-bottom: 10px;
-  width: 100%;
+  border: 2px solid rgb(92, 92, 92);
+  border-radius: 10px;
+  color: rgb(207, 207, 207);
 }
 
 .reply-button {
- 
-  margin-bottom: 20px;
+  margin-top: auto; /* Alinea el botón en la parte inferior del contenedor */
+}
+
+h4 {
+  color: #d1d1d1;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.content, .reply {
+  color: #e6e6e6;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.replies {
+  margin-top: 10px;
+}
+
+.reply {
+  border: 2px solid rgb(178, 139, 71);
+  background-color: #3d3d3d5f;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+}
+
+.SeeAllComments{
+  font-size: 13px;
+  font-weight: bold;
+  color: #cc7700;
+  margin-top: 15px;
 }

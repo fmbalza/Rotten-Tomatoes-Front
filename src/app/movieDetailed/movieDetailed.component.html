@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="movie-details">
     <div class="poster-container">
       <img [src]="movieDetail.img" alt="Movie Poster" class="poster-image">
@@ -40,6 +44,8 @@
           <li><strong>Original Language:</strong> {{ movieDetail.original_language }}</li> -->
  
         </ul>
+
+        <!-- <iframe src="https://www.youtube.com/watch?v=evl5ai7Mg7w" frameborder="0" ></iframe> -->
       </div>
     </div>
   </div>

@@ -1,9 +1,36 @@
 <div class="comment">
   <h3>{{ comment.user.username }}</h3>
   <div class="content">{{ comment.text }}</div>
-  <ion-icon name="arrow-redo-outline" (click)="toggleReplyInput(comment)"></ion-icon>
+
+  <div class="SeeAllComments" (click)="toggleReplyInput(comment)">See all comments ...</div>
+
   <div class="reply-input" *ngIf="comment.showReplyInput">
-    <ion-textarea [(ngModel)]="comment.reply" class="reply-box" label-placement="floating" fill="outline" type="text" placeholder="Write a reply..."></ion-textarea>
-    <ion-button (click)="submitReply(comment)" class="reply-button">Reply</ion-button>
+
+    
+    <div class="replies">
+      <div class="reply" *ngFor="let reply of comment.replies">
+        <h4>{{ reply.user.username }}</h4>
+        <div>{{ reply.text }}</div>
+      </div>
+    </div>
+
+    <div class="reply-input" *ngIf="comment.showReplyInput">
+      <!-- Otros elementos existentes -->
+    
+      <!-- Nuevo toggle para mostrar el área de texto y el botón "Send" -->
+      <div class="SeeAllComments" (click)="toggleSendReplyInput(comment)">Send a reply</div>
+    
+      <!-- Área de texto y botón de enviar -->
+      <div *ngIf="comment.showSendReplyInput">
+        <ion-textarea ngDefaultControl [(ngModel)]="replyy.text" class="reply-box" label-placement="floating" fill="outline" type="text" placeholder="Write a reply..."></ion-textarea>
+        <ion-button (click)="createReply()" class="reply-button">Send</ion-button>
+      </div>
+    </div>
   </div>
+
 </div>
+
+
+
+
+

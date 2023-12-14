@@ -19,3 +19,10 @@ export interface comment{
     userId:string;
     rating:number ;
   }
+
+  export interface replyy{
+   
+    commentId:string;
+    userId:string;
+    text:string;
+  }
