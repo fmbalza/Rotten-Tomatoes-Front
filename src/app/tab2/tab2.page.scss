@@ -1,0 +1,40 @@
+/* styles.css */
+
+/* Estilos para los ion-select y ion-item */
+ion-item {
+    border-radius: 20px;
+    
+}
+
+ion-select {
+    border-radius: 20px;
+    border: 1px solid #9e802e;
+    background-color: rgba(90, 90, 90, 0.397);
+    //width: 250px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ion-input {
+    border-radius: 20px;
+    border: 1px solid #9e802e;
+    background-color: rgba(90, 90, 90, 0.397);
+    //width: 250px;
+    padding: 10px;
+}
+
+/* Estilos para los ion-col */
+ion-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para la segunda fila de ion-col */
+ion-col.ion-float-right {
+  align-items: flex-end;
+}
+
+/* Estilos para el botón */
+ion-button {
+  margin-top: 10px;
+}
