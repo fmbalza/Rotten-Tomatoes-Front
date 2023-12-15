@@ -1,3 +1,21 @@
-<p>
-  Movies works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Top Rated</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="grid-container">
+   
+
+          <app-movie  class="grid-item" *ngFor="let movie of movies" [movie]="movie"></app-movie>
+
+      
+  
+  </div>
+
+</ion-content>

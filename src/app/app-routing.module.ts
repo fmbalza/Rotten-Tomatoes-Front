@@ -4,6 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MovieDetailedComponent } from './movieDetailed/movieDetailed.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
+import { ActionComponent } from './Action/Action.component';
+import { ComedyComponent } from './Comedy/Comedy.component';
+import { MoviesComponent } from './Movies/Movies.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -28,6 +32,18 @@ const routes: Routes = [
   {    
     path: 'top-rated',
     component: TopRatedComponent
+  },
+  {    
+    path: 'action',
+    component: ActionComponent
+  },
+  {    
+    path: 'comedy',
+    component: ComedyComponent
+  },
+  {    
+    path: 'movies',
+    component: MoviesComponent
   },
 ];
 @NgModule({
