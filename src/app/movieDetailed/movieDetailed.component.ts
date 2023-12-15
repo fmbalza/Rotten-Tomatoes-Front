@@ -10,7 +10,7 @@ import { comment, createrating } from '../interfaces/comment';
 import { createComment } from '../interfaces/comment';
 import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-movieDetailed',
@@ -20,13 +20,13 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class MovieDetailedComponent implements OnInit {
   private ratingKey: string
   private movieId: string;
-  trailer1Url : SafeResourceUrl 
-   trailer2Url : SafeResourceUrl 
-   trailer3Url : SafeResourceUrl 
-  comments: comment[] =[]
+   public trailer1Url : SafeResourceUrl 
+   public trailer2Url : SafeResourceUrl 
+   public trailer3Url : SafeResourceUrl 
+  comments: comment[] = []
   genres: Genre[] = [];
 
-  constructor( private sanitizer: DomSanitizer ,private alertCtlr: AlertController, private authService: AuthService, private movieService: TweetService, private storage: Storage, private http: HttpClient,private nav: NavController) { this.trailer3Url='',this.trailer2Url='',this.trailer1Url='',this.movieId = '', this.ratingKey= '' }
+  constructor( public sanitizer: DomSanitizer ,private alertCtlr: AlertController, private authService: AuthService, private movieService: TweetService, private storage: Storage, private http: HttpClient,private nav: NavController) { this.trailer3Url='',this.trailer2Url='',this.trailer1Url='',this.movieId = '', this.ratingKey= '' }
   movieDetail: movieDetail={
     id: '',
     title: '',
@@ -81,7 +81,7 @@ export class MovieDetailedComponent implements OnInit {
       // Aquí puedes utilizar el token y el userID para crear el tweet
       this.createComment.userId=token
       this.createrating.userId=token
-      console.log('UserId:', this.createComment.userId);
+     
     
     });
   });
@@ -107,14 +107,14 @@ export class MovieDetailedComponent implements OnInit {
 
   this.cargando()
   this.loadComments()
-  this.showVideo()
+  
   }
 
 
 
   async cargando(){
     this.movieId = await this.movieService.getIdMovie();
-    console.log('Este es el id de la movie en vista', this.movieId);
+  
     
     const httpOptions = {
       headers: {
@@ -161,26 +161,25 @@ export class MovieDetailedComponent implements OnInit {
     )
     .subscribe((response: any) => {
    
-      
-      
       console.log(response)
+
       this.movieDetail.title= response.title
       this.movieDetail.img= response.image
       this.movieDetail.description= response.description
       this.movieDetail.id= response.apiId
       this.movieDetail.publicRating=  parseFloat(response.publicRating.average).toFixed(1)
       this.movieDetail.criticRating=  parseFloat(response.criticRating.average).toFixed(1)
-      console.log('apiId:',this.movieDetail.id)
+     
       
       this.genres = response.genres.map((genre: any) => genre.name);
-      console.log(this.genres)
+   
       
       
 
 
     });
 
-
+    this.showVideo()
   }
 
   async loadComments(){
@@ -188,7 +187,7 @@ export class MovieDetailedComponent implements OnInit {
  
     console.log('Este es el id de la movie en vista', this.movieId);
     this.http.get(`https://rotten-tomatoes-backend.up.railway.app/movies/${this.movieId}/comments`).subscribe((data: any) => {
-      console.log('comments: ', data);
+  
       this.comments = data;
       
     });
@@ -209,7 +208,7 @@ export class MovieDetailedComponent implements OnInit {
 
     if (!this.createComment.text) {
       // Mostrar un mensaje de error o realizar otra acción apropiada
-      console.log('El campo de texto está vacío');
+  
 
       const alert = await this.alertCtlr.create({
         cssClass: 'alert',
@@ -229,7 +228,7 @@ export class MovieDetailedComponent implements OnInit {
      console.log(error)
      return throwError(error)
     })).subscribe((response) => {
-     console.log(response)
+
 
       this.loadComments()
   })
@@ -247,7 +246,7 @@ export class MovieDetailedComponent implements OnInit {
 
     if (!selectedRating) {
       // Mostrar un mensaje de error o realizar otra acción apropiada
-      console.log('El campo de texto está vacío');
+      
 
    
 
@@ -264,18 +263,18 @@ export class MovieDetailedComponent implements OnInit {
     }
 
     this.createrating.rating = parseInt(selectedRating.value, 10);
-    console.log(' ratingKey ', this.ratingKey)
+
   
     localStorage.setItem(this.ratingKey, this.createrating.rating.toString());
 
-    console.log( "ratificacion",this.createrating.rating, typeof(this.createrating.rating) )
+
 
       this.createrating.apiId =  this.movieDetail.id
     await this.http.post(`https://rotten-tomatoes-backend.up.railway.app/movies/${this.movieId}/rating`, this.createrating).pipe(catchError( (error)=>{
      console.log(error)
      return throwError(error)
     })).subscribe((response) => {
-     console.log(response)
+   
   })
   }
 
@@ -283,7 +282,7 @@ export class MovieDetailedComponent implements OnInit {
 
 
   async showVideo(){
-    this.movieId = await this.movieService.getIdMovie();
+     this.movieId = await this.movieService.getIdMovie();
     console.log('Este es el id de la movie en vista', this.movieId);
     
     const httpOptions = {
@@ -306,17 +305,17 @@ export class MovieDetailedComponent implements OnInit {
         console.log('trailer:',trailer)
       
 
-        const trailer1 = `https://www.youtube.com/watch?v=${trailer[0].key}`;
-        const trailer2 = `https://www.youtube.com/watch?v=${trailer[1].key}`;
-        const trailer3 = `https://www.youtube.com/watch?v=${trailer[2].key}`;
+        const trailer1 = `https://www.youtube.com/embed/${trailer[0].key}`;
+        const trailer2 = `https://www.youtube.com/embed/${trailer[1].key}`;
+        const trailer3 = `https://www.youtube.com/embed/${trailer[2].key}`;
       
         console.log('Trailer 1:', trailer1);
         console.log('Trailer 2:', trailer2);
         console.log('Trailer 3:', trailer3);
 
-        this.trailer1Url = trailer1
-        this.trailer2Url = this.sanitizer.bypassSecurityTrustUrl(trailer2);
-        this.trailer3Url = this.sanitizer.bypassSecurityTrustUrl(trailer3);
+        this.trailer1Url = this.sanitizer.bypassSecurityTrustResourceUrl(trailer1);
+        this.trailer2Url = this.sanitizer.bypassSecurityTrustResourceUrl(trailer2);
+        this.trailer3Url = this.sanitizer.bypassSecurityTrustResourceUrl(trailer3);
         console.log( this.trailer1Url )
     });
 

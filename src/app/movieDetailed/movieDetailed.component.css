@@ -18,7 +18,8 @@
   .poster-image {
     width: 100%;
     height: auto;
-    border-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
   }
   
   .details-container {
@@ -27,7 +28,15 @@
     align-items: center;
   }
   
-  .rating-container {
+  .rating-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .rating-container,
+  .ratingCritic-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +44,17 @@
     height: 80px;
     border-radius: 50%;
     background-color: #f2f2f2;
-    margin-bottom: 20px;
+  }
+  
+  .rating-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #ccc;
   }
   
   .rating {
@@ -161,4 +180,13 @@
 .textarea-container{
   border: 2px solid rgb(174, 174, 174);
   border-radius: 20px;
+}
+.trailer{
+  margin-left: 35px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.genre{
+  margin-left: 3% ;
 }

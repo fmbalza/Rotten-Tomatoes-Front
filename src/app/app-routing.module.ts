@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MovieDetailedComponent } from './movieDetailed/movieDetailed.component';
+import { TopRatedComponent } from './top-rated/top-rated.component';
 const routes: Routes = [
   {
     path: '',
@@ -23,7 +24,11 @@ const routes: Routes = [
   {
     path: 'movieDetailed',
     component: MovieDetailedComponent
-  }
+  },
+  {    
+    path: 'top-rated',
+    component: TopRatedComponent
+  },
 ];
 @NgModule({
   imports: [

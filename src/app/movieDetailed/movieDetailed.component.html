@@ -17,35 +17,44 @@
       <img [src]="movieDetail.img" alt="Movie Poster" class="poster-image">
     </div>
     <div class="details-container">
-      <div class="rating-container">
-        <div class="rating-circle">
-          <span class="rating">{{ this.movieDetail.publicRating }}</span>
-        </div>
-      
-      </div>
-      <div class="rating-container">
 
-        <div class="rating-circle">
-          <span class="rating">{{ this.movieDetail.criticRating }}</span>
+      <div class="rating-section">
+        <h2>Rating público</h2>
+        <div class="rating-container">
+          <div class="rating-circle">
+            <span class="rating">{{ this.movieDetail.publicRating }}</span>
+          </div>
         </div>
+      </div>
       
+      <div class="rating-section">
+        <h2>Rating de críticos</h2>
+        <div class="ratingCritic-container">
+          <div class="rating-circle">
+            <span class="rating">{{ this.movieDetail.criticRating }}</span>
+          </div>
+        </div>
       </div>
       <div class="overview">
         <h3>Overview</h3>
         <p>{{ movieDetail.description }}</p>
       </div>
       <div class="additional-details">
-        <h3>Additional Details</h3>
+
         <ul>
 
-          <li><strong>Genre IDs:</strong>{{ this.genres }} </li>
-          <!-- <li><strong>Popularity:</strong> {{ movieDetail.popularity }}</li>
-          <li><strong>Release Date:</strong> {{ movieDetail.release_date }}</li>
-          <li><strong>Original Language:</strong> {{ movieDetail.original_language }}</li> -->
+          <li class="genre"><strong>Genre IDs:</strong>{{ this.genres }} </li>
+    
  
         </ul>
 
-        <!-- <iframe src="https://www.youtube.com/watch?v=evl5ai7Mg7w" frameborder="0" ></iframe> -->
+          <h3>Trailer Collection </h3>
+        <iframe class="trailer" *ngIf="trailer1Url" width="80%" height="100%" [src]="trailer1Url" frameborder="0" ></iframe>
+
+        <iframe class="trailer"*ngIf="trailer2Url" width="80%" height="100%" [src]="trailer2Url" frameborder="0" ></iframe>
+
+        <iframe class="trailer"*ngIf="trailer3Url" width="80%" height="100%" [src]="trailer3Url" frameborder="0" ></iframe>
+        
       </div>
     </div>
   </div>
