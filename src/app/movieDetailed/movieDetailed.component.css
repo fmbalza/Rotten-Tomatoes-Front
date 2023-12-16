@@ -114,8 +114,9 @@
 
 
   .boxes{
-    margin-right: 70px;
+
     box-sizing: border-box;
+    width: 350px;
   }
 
   .comments{
@@ -178,7 +179,7 @@
 }
 
 .textarea-container{
-  border: 2px solid rgb(174, 174, 174);
+
   border-radius: 20px;
 }
 .trailer{

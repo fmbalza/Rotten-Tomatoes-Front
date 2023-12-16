@@ -14,6 +14,13 @@ import { TweetService } from 'src/app/services/tweetService.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page implements OnInit{
+
+  showFilters = false;
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
+  }
+
   // propiedades para el buscador
   movies: movies[] = [];
   textoBuscar ='';
@@ -27,16 +34,16 @@ export class Tab2Page implements OnInit{
 
   // opciones para el filtro SortBy
   sortByOptions: { label: string, value: string }[] = [
-    { label: 'Popularidad descendente', value: 'popularity.desc' },
-    { label: 'Popularidad ascendente', value: 'popularity.asc' },
-    { label: 'Ingresos descendente', value: 'revenue.desc' },
-    { label: 'Ingresos ascendente', value: 'revenue.asc' },
-    { label: 'Fecha de lanzamiento descendente', value: 'primary_release_date.desc' },
-    { label: 'Fecha de lanzamiento ascendente', value: 'primary_release_date.asc' },
-    { label: 'Votación descendente', value: 'vote_average.desc' },
-    { label: 'Votación ascendente', value: 'vote_average.asc' },
-    { label: 'Votos descendente', value: 'vote_count.desc' },
-    { label: 'Votos ascendente', value: 'vote_count.asc' }
+    { label: 'Descending popularity', value: 'popularity.desc' },
+    { label: 'Ascending popularity', value: 'popularity.asc' },
+    { label: 'Descending revenue', value: 'revenue.desc' },
+    { label: 'Ascending revenue', value: 'revenue.asc' },
+    { label: 'Descending release date', value: 'primary_release_date.desc' },
+    { label: 'Ascending release date', value: 'primary_release_date.asc' },
+    { label: 'Descending vote average', value: 'vote_average.desc' },
+    { label: 'Ascending vote average', value: 'vote_average.asc' },
+    { label: 'Descending vote count', value: 'vote_count.desc' },
+    { label: 'Ascending vote count', value: 'vote_count.asc' }
   ];
 
   constructor(private http: HttpClient, private storage: Storage, private nav: NavController, private movieService: TweetService) {}

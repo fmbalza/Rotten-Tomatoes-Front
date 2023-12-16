@@ -5,22 +5,28 @@
     (ionChange)="searchMovies( $event ) "
   ></ion-searchbar>
 
-  <ion-list>
+  <ion-button expand="full" (click)="toggleFilters()">
+    {{ showFilters ? 'Hide Filters': 'Show Filters'}}
+
+    
+  </ion-button>
+
+  <ion-list *ngIf="showFilters">
     <!-- Filtros -->
     <ion-row>
       <ion-col size="7">
         <ion-item>
-          <ion-select [(ngModel)]="selectedGenre" label="Género">
-            <ion-select-option value="">Todos</ion-select-option>
-            <ion-select-option value="28">Acción</ion-select-option>
-            <ion-select-option value="35">Comedia</ion-select-option>
-            <ion-select-option value="12">Aventura</ion-select-option>
-            <ion-select-option value="16">Animacion</ion-select-option>
-            <ion-select-option value="80">Crimen</ion-select-option>
-            <ion-select-option value="99">Documentario</ion-select-option>
-            <ion-select-option value="10751">Familia</ion-select-option>
-            <ion-select-option value="14">Fantasia</ion-select-option>
-            <ion-select-option value="36">Historia</ion-select-option>
+          <ion-select [(ngModel)]="selectedGenre" label="Genre">
+            <ion-select-option value="">All</ion-select-option>
+            <ion-select-option value="35">Comedy</ion-select-option>
+            <ion-select-option value="12">Adventure</ion-select-option>
+            <ion-select-option value="16">Animation</ion-select-option>
+            <ion-select-option value="80">Crime</ion-select-option>
+            <ion-select-option value="99">Documentaries</ion-select-option>
+            <ion-select-option value="10751">Family</ion-select-option>
+            <ion-select-option value="14">Fantasy</ion-select-option>
+            <ion-select-option value="36">History</ion-select-option>
+            <ion-select-option value="28">Action</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
@@ -29,7 +35,7 @@
           <ion-input
             type="number"
             [(ngModel)]="selectedYear"
-            label="Año"
+            label="Year"
           ></ion-input>
         </ion-item>
       </ion-col>
@@ -52,7 +58,7 @@
           <ion-input
             type="number"
             [(ngModel)]="selectedDuration"
-            label="Duracion"
+            label="Duration"
           ></ion-input>
         </ion-item>
       </ion-col>
@@ -60,32 +66,32 @@
 
     <ion-row>
       <ion-col size="6">
-        <ion-select [(ngModel)]="selectedType" label="Tipo">
-          <ion-select-option value="movie">Película</ion-select-option>
-          <ion-select-option value="serie">Serie</ion-select-option>
+        <ion-select class="tipo" [(ngModel)]="selectedType" label="Type">
+          <ion-select-option value="movie">Movie</ion-select-option>
+          <ion-select-option value="serie">series</ion-select-option>
         </ion-select>
       </ion-col>
     </ion-row>
+
+    <ion-button expand="full" (click)="applyFilters()"
+      >Aply Filters</ion-button
+    >
   </ion-list>
 
-  <ion-button expand="full" (click)="applyFilters()"
-    >Aplicar filtros</ion-button
-  >
+
+
+
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item
-      *ngFor="let movie of movies | filtro:textoBuscar: 'title' "
-      (click)="goToMovieDetails(movie.id)"
-    >
-      <ion-avatar slot="start">
-        <img
-          [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-          alt="Foto de perfil"
-        />
-      </ion-avatar>
-      <ion-label> {{movie.title}} </ion-label>
-    </ion-item>
+      <div class="grid-container">
+   
+
+        <app-movie (click)="goToMovieDetails(movie.id)"  class="grid-item" *ngFor="let movie of movies | filtro:textoBuscar: 'title' " [movie]="movie"></app-movie>
+
+    
+
+      </div>
   </ion-list>
 </ion-content>

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { SharedComponentsModule } from '../components/shared-components.module'; 
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
@@ -15,7 +16,8 @@ import { Tab2PageRoutingModule } from './tab2-routing.module';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
-    PipesModule
+    PipesModule,
+    SharedComponentsModule
   ],
   declarations: [Tab2Page]
 })
