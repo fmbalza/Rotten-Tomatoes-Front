@@ -27,7 +27,7 @@ export class Tab2Page implements OnInit{
   // propiedades para el buscador
   movies: movies[] = [];
   series: series[] = [];
-  textoBuscar ='movie';
+  textoBuscar ='';
 
   // propiedades para los filtros
   selectedGenre: string = '';
