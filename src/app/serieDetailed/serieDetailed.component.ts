@@ -108,10 +108,10 @@ export class SerieDetailedComponent implements OnInit {
   async cargando(){
     this.serieId = await this.serieService.getIdSerie();
   
-    // this.http.get(`https://rotten-tomatoes-backend.up.railway.app/series/${this.serieId}/similar`).subscribe((data: any) => {
-    //   console.log('series Toprated: ', data.results);
-    //   this.movieAction = data.results;
-    // }); 
+    this.http.get(`https://rotten-tomatoes-backend.up.railway.app/series/${this.serieId}/similar`).subscribe((data: any) => {
+      console.log('series Toprated: ', data.results);
+      this.movieAction = data.results;
+    }); 
     
     const httpOptions = {
       headers: {
@@ -284,7 +284,7 @@ export class SerieDetailedComponent implements OnInit {
 
 
 
-  async goToMovieDetails(id: any) {
+  async goToSerieDetails(id: any) {
   
     try {
       await this.serieService.saveIdSerie(id);
