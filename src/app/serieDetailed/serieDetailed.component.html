@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button (click)="back()"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ movieDetail.title }}</ion-title>
+    <ion-title>{{ serieDetail.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,49 +14,42 @@
   </ion-refresher>
   <div class="movie-details">
     <div class="poster-container">
-      <img [src]="movieDetail.img" alt="Movie Poster" class="poster-image">
+      <img [src]="serieDetail.img" alt="Serie Poster" class="poster-image">
     </div>
     <div class="details-container">
 
       <div class="rating-section">
-        <h2>Rating público</h2>
+        <h2>Public Rating</h2>
         <div class="rating-container">
           <div class="rating-circle">
-            <span class="rating">{{ this.movieDetail.publicRating }}</span>
+            <span class="rating">{{ this.serieDetail.publicRating }}</span>
           </div>
         </div>
       </div>
       
       <div class="rating-section">
-        <h2>Rating de críticos</h2>
+        <h2>Critic Rating</h2>
         <div class="ratingCritic-container">
           <div class="rating-circle">
-            <span class="rating">{{ this.movieDetail.criticRating }}</span>
+            <span class="rating">{{ this.serieDetail.criticRating }}</span>
           </div>
         </div>
       </div>
       <div class="overview">
         <h3>Overview</h3>
-        <p>{{ movieDetail.description }}</p>
+        <p>{{ serieDetail.description }}</p>
       </div>
       <div class="additional-details">
 
         <ul>
 
-          <li class="genre"><strong>Genre IDs:</strong>{{ this.genres }} </li>
+          <li class="genre"><strong>Genre:</strong>{{ this.genres }} </li>
     
  
         </ul>
 
-          <h3>Trailer Collection </h3>
-        <iframe class="trailer" *ngIf="trailer1Url" width="80%" height="100%" [src]="trailer1Url" frameborder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
+          <h3>Seasons: {{ this.serieDetail.seasons}}</h3>
 
-        <iframe class="trailer"*ngIf="trailer2Url" width="80%" height="100%" [src]="trailer2Url" frameborder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
-
-        <iframe class="trailer"*ngIf="trailer3Url" width="80%" height="100%" [src]="trailer3Url" frameborder="0"   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen></iframe>
         
       </div>
     </div>

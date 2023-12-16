@@ -18,12 +18,9 @@ export interface movieTopRated{
 
 }
 export interface series{
-    id: string;
-    original_title: string;
-    poster_path: string;
-    video: boolean;
-    vote_average: string;
-    backdrop_path:string;
+    
+    title: string;
+    id: string
 
 }
 export interface movieCommedy{
@@ -61,6 +58,17 @@ export interface movieDetail{
     description:string;
     publicRating: string;
     criticRating: string;
+
+}
+
+export interface serieDetail{
+    id: string;
+    name: string;
+    img: string;
+    description:string;
+    publicRating: string;
+    criticRating: string;
+    seasons:string;
 
 }
 

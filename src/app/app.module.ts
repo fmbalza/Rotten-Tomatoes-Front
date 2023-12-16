@@ -17,16 +17,18 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { ActionComponent } from './Action/Action.component';
 import { ComedyComponent } from './Comedy/Comedy.component';
 import { MoviesComponent } from './Movies/Movies.component';
+import { SerieDetailedComponent } from './serieDetailed/serieDetailed.component';
 
 @NgModule({
-  declarations: [								AppComponent,
+  declarations: [									AppComponent,
       LoginComponent,
       RegisterComponent,
       MovieDetailedComponent,
       TopRatedComponent,
       ActionComponent,
       ComedyComponent,
-      MoviesComponent
+      MoviesComponent,
+      SerieDetailedComponent
    ],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule,IonicStorageModule.forRoot(), CommonModule, FormsModule,SharedComponentsModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -7,6 +7,7 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { ActionComponent } from './Action/Action.component';
 import { ComedyComponent } from './Comedy/Comedy.component';
 import { MoviesComponent } from './Movies/Movies.component';
+import { SerieDetailedComponent } from './serieDetailed/serieDetailed.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'movieDetailed',
     component: MovieDetailedComponent
+  },
+  {
+    path: 'serieDetailed',
+    component: SerieDetailedComponent
   },
   {    
     path: 'top-rated',

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { movies } from '../interfaces/movie';
+import { series } from '../interfaces/movie';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { Storage } from '@ionic/storage-angular';
 import { NavController } from '@ionic/angular';
 import { TweetService } from 'src/app/services/tweetService.service';
-
+import { SerieService } from '../services/serieService.service';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -21,8 +22,11 @@ export class Tab2Page implements OnInit{
     this.showFilters = !this.showFilters;
   }
 
+
+
   // propiedades para el buscador
   movies: movies[] = [];
+  series: series[] = [];
   textoBuscar ='';
 
   // propiedades para los filtros
@@ -46,7 +50,7 @@ export class Tab2Page implements OnInit{
     { label: 'Ascending vote count', value: 'vote_count.asc' }
   ];
 
-  constructor(private http: HttpClient, private storage: Storage, private nav: NavController, private movieService: TweetService) {}
+  constructor(private serieService: SerieService,private http: HttpClient, private storage: Storage, private nav: NavController, private movieService: TweetService) {}
   ngOnInit(): void {
     this.movies = [];
     
@@ -117,6 +121,18 @@ export class Tab2Page implements OnInit{
     try {
       await this.movieService.saveIdMovie(id);
       this.nav.navigateForward("/movieDetailed");
+    } catch (error) {
+      console.log(error);
+    }
+        
+  }
+
+  async goToSerieDetails(id: any) {
+  
+    try {
+      console.log('series')
+      await this.serieService.saveIdSerie(id);
+      this.nav.navigateForward("/serieDetailed");
     } catch (error) {
       console.log(error);
     }

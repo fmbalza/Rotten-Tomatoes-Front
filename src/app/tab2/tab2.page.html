@@ -74,7 +74,7 @@
     </ion-row>
 
     <ion-button expand="full" (click)="applyFilters()"
-      >Aply Filters</ion-button
+      >Aply</ion-button
     >
   </ion-list>
 
@@ -88,7 +88,7 @@
       <div class="grid-container">
    
 
-        <app-movie (click)="goToMovieDetails(movie.id)"  class="grid-item" *ngFor="let movie of movies | filtro:textoBuscar: 'title' " [movie]="movie"></app-movie>
+        <app-movie (click)="selectedType === 'movie' ? goToMovieDetails(movie.id) : goToSerieDetails(movie.id)"  class="grid-item" *ngFor="let movie of movies | filtro:textoBuscar: 'title' " [movie]="movie"></app-movie>
 
     
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, assertNotInReactiveContext } from '@angular/core';
 import { TweetService } from '../services/tweetService.service';
+import { SerieService } from '../services/serieService.service';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage-angular';
 import { catchError } from 'rxjs/operators';
@@ -11,7 +12,7 @@ import { createComment } from '../interfaces/comment';
 import { AuthService } from '../services/auth.service';
 import { AlertController } from '@ionic/angular';
 import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
-
+import { movieAction } from '../interfaces/movie';
 @Component({
   selector: 'app-movieDetailed',
   templateUrl: './movieDetailed.component.html',
@@ -26,7 +27,7 @@ export class MovieDetailedComponent implements OnInit {
   comments: comment[] = []
   genres: Genre[] = [];
 
-  constructor( public sanitizer: DomSanitizer ,private alertCtlr: AlertController, private authService: AuthService, private movieService: TweetService, private storage: Storage, private http: HttpClient,private nav: NavController) { this.trailer3Url='',this.trailer2Url='',this.trailer1Url='',this.movieId = '', this.ratingKey= '' }
+  constructor( private serieService: SerieService,public sanitizer: DomSanitizer ,private alertCtlr: AlertController, private authService: AuthService, private movieService: TweetService, private storage: Storage, private http: HttpClient,private nav: NavController) { this.trailer3Url='',this.trailer2Url='',this.trailer1Url='',this.movieId = '', this.ratingKey= '' }
   movieDetail: movieDetail={
     id: '',
     title: '',
@@ -50,9 +51,12 @@ export class MovieDetailedComponent implements OnInit {
     }
 
 
-    
+    movieAction: movieAction[] =[]
 
   async ngOnInit() {
+
+
+
     this. movieDetail={
       id: '',
       title: '',
@@ -86,6 +90,8 @@ export class MovieDetailedComponent implements OnInit {
     });
   });
 
+ 
+
 //   const storedRating = localStorage.getItem(this.ratingKey);
 //   console.log(' ratingKey ', this.ratingKey)
 // if (storedRating) {
@@ -115,6 +121,10 @@ export class MovieDetailedComponent implements OnInit {
   async cargando(){
     this.movieId = await this.movieService.getIdMovie();
   
+    this.http.get(`https://rotten-tomatoes-backend.up.railway.app/movies/${this.movieId}/similar`).subscribe((data: any) => {
+      console.log('movies Toprated: ', data.results);
+      this.movieAction = data.results;
+    }); 
     
     const httpOptions = {
       headers: {
@@ -132,22 +142,6 @@ export class MovieDetailedComponent implements OnInit {
     )
     .subscribe((response: any) => {
    
-      
-      
-      // console.log(response)
-      // this.movieDetail.title= response.title
-      // this.movieDetail.img= response.image
-      // this.movieDetail.description= response.description
-      // this.movieDetail.id= response.apiId
-      // this.movieDetail.publicRating=  parseFloat(response.publicRating.average).toFixed(1)
-      // this.movieDetail.criticRating=  parseFloat(response.criticRating.average).toFixed(1)
-      // console.log('apiId:',this.movieDetail.id)
-      
-      // this.genres = response.genres.map((genre: any) => genre.name);
-      // console.log(this.genres)
-      
-      
-
 
     });
 
@@ -173,9 +167,6 @@ export class MovieDetailedComponent implements OnInit {
       
       this.genres = response.genres.map((genre: any) => genre.name);
    
-      
-      
-
 
     });
 
@@ -321,5 +312,19 @@ export class MovieDetailedComponent implements OnInit {
 
   }
 
+  async goToMovieDetails(id: any) {
+  
+    try {
+      await this.movieService.saveIdMovie(id);
+      this.nav.navigateForward("/movieDetailed");
+    
+      this.cargando()
+      this.loadComments()
+      this.showVideo()
+    } catch (error) {
+      console.log(error);
+    }
+        
+  }
 
 }
